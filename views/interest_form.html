@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</head>
+<title>Form</title>
+
+<body>
+
+    <div class="container">
+        <br><br>
+        <div class="row">
+            <h2>
+                <%= title %>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <% if (!data.id) { %>
+                    <form action="/profile_form/interest_process" id="form-profile" method="POST" enctype="multipart/form-data">
+                <% } else { %>
+                    <form action="/profile_form/interest_process/update/<%= data.id %>" id="form-profile" method="POST" enctype="multipart/form-data">
+                <% } %>
+                    <div class="form-group">
+                        <label for="firstname">* First name:</label><br>
+                        <input type="text" class="form-control" id="firstname" name="firstname"
+                            value="<%= data.firstname %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="middlename">Middle name:</label><br>
+                        <input type="text" class="form-control" id="middlename" name="middlename"
+                            value="<%= data.middlename %>">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">* Last name:</label><br>
+                        <input type="text" class="form-control" id="lastname" name="lastname"
+                            value="<%= data.lastname %>" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">* Reason:</label><br>
+                        <input type="text" class="form-control" id="reason" name="reason"
+                            value="<%= data.reason %>" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <% if (data.image) { %>
+                                    <label for="image"> Image:</label><br>
+                                    <input type="file" class="form-control" onchange="readURL(this);" id="image" name="image" >
+                                <% } else { %>
+                                    <label for="image">* Image:</label><br>
+                                    <input type="file" class="form-control" onchange="readURL(this);" id="image" name="image" required>                                    
+                                <% } %>
+                            </div>
+                            <div class="col-md-6">
+                                <% if (data.image) { %>
+                                    <img id="img-preview" src="https://stp.sparksoftdemo.com/profile_form/images/<%= data.image %>" />
+                                <% } else { %>
+                                    <img id="img-preview" src="https://stp.sparksoftdemo.com/profile_form/images/noimg.jpg" />
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <input type="submit" class="btn btn-primary form-control" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+
+
+        })
+        
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#img-preview')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+            
+    </script>
+</body>
+
+</html>

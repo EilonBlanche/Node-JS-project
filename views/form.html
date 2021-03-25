@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</head>
+<title>Form</title>
+<body>
+
+<div class="container">
+    <br><br>
+    <div class="row">
+      <h2><%= title %></h2>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form action="/profile_form/process" id="form-profile" method="POST">
+          <div class="form-group">
+            <label for="firstname">* First name:</label><br>
+            <input type="text" class="form-control" id="profile_firstname" name="profile_firstname" value="<%= data.profile_firstname %>" required>
+          </div>
+          <div class="form-group">
+            <label for="middlename">* Middle name:</label><br>
+            <input type="text" class="form-control" id="profile_middlename" name="profile_middlename" value="<%= data.profile_middlename %>" required>
+          </div>
+          <div class="form-group">
+            <label for="lastname">* Last name:</label><br>
+            <input type="text" class="form-control" id="profile_lastname" name="profile_lastname" value="<%= data.profile_lastname %>" required>
+          </div>
+          <div class="form-group">
+            <label for="profile_gender">* Gender:</label><br>
+            <select name="profile_gender" id="profile_gender" class="form-control" required>
+              <option value="" disabled selected>Select Gender . . .</option>
+              <option value="0">Male</option>
+              <option value="1">Female</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="profile_address1">* Street #:</label><br>
+            <input type="text" class="form-control" id="profile_address1" name="profile_address1" value="<%= data.profile_address1 %>" required>
+          </div>
+          <div class="form-group">
+            <label for="profile_address2">* Street :</label><br>
+            <input type="text" class="form-control" id="profile_address2" name="profile_address2" value="<%= data.profile_address2 %>" required>
+          </div>
+          <div class="form-group">
+            <label for="profile_address3">* Suburb :</label><br>
+            <input type="text" class="form-control" id="profile_address3" name="profile_address3" value="<%= data.profile_address3 %>" required>
+          </div>
+          <div class="form-group">
+            <label for="profile_address4">* City :</label><br>
+            <input type="text" class="form-control" id="profile_address4" name="profile_address4" value="<%= data.profile_address4 %>" required>
+          </div>
+          <div class="form-group" hidden>
+            <label for="profile_subburb"> Suburb :</label><br>
+            <input type="text" class="form-control" id="profile_subburb" name="profile_subburb" value="<%= data.profile_subburb %>">
+          </div>
+          <div class="form-group">
+            <label for="profile_state">* State :</label><br>
+            <input type="text" class="form-control" id="profile_state" name="profile_state" value="<%= data.profile_state %>" required>
+          </div>
+          <div class="form-group">
+            <label for="profile_country">* Country :</label><br>
+            <input type="text" class="form-control" id="profile_country" name="profile_country" value="<%= data.profile_country %>" required>
+          </div>
+          <div class="form-group">
+            <label for="profile_postcode">* Post Code :</label><br>
+            <input type="text" class="form-control" id="profile_postcode" name="profile_postcode" value="<%= data.profile_postcode %>" required>
+          </div>
+          <div class="form-group">
+            <label for="profile_birthdate">* Birthdate :</label><br>
+            <input type="date" class="form-control" id="profile_birthdate" name="profile_birthdate" value="<%= data.profile_birthdate %>" required>
+          </div>
+          <div class="form-group">
+            <label for="profile_mobile_number">* Mobile Number :</label><br>
+            <input type="text" class="form-control" id="profile_mobile_number" name="profile_mobile_number" value="<%= data.profile_mobile_number %>" required>
+          </div>
+          <div class="form-group">
+            <label for="profile_phone1">Phone 1 :</label><br>
+            <input type="text" class="form-control" id="profile_phone1" name="profile_phone1" value="<%= data.profile_phone1 %>">
+          </div>
+          <div class="form-group">
+            <label for="profile_phone2">Phone 2 :</label><br>
+            <input type="text" class="form-control" id="profile_phone2" name="profile_phone2" value="<%= data.profile_phone2 %>">
+          </div>
+          <div class="form-group">
+            <label for="profile_nationality">* Nationality :</label><br>
+            <input type="text" class="form-control" id="profile_nationality" name="profile_nationality" value="<%= data.profile_nationality %>" required>
+          </div>
+          <div class="form-group">
+            <label for="profile_birthplace">* Birth place :</label><br>
+            <input type="text" class="form-control" id="profile_birthplace" name="profile_birthplace" value="<%= data.profile_birthplace %>" required>
+          </div>
+          <div class="form-group">
+            <label for="profile_person_of_interest">* Person of Interest :</label><br>           
+            <select name="profile_person_of_interest" id="profile_person_of_interest" class="form-control" required>
+              <option value="" disabled selected>Select One . . .</option>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="profile_reason" hidden>Reason :</label><br>
+            <input type="text" readonly class="form-control" id="profile_reason" name="profile_reason" value="<%= data.profile_reason %>" hidden>
+          </div>
+          
+
+          
+
+          <div class="form-group">
+            <label for="database">Database:</label><br>
+            <select name="database" id="database" class="form-control" required>
+              <option value="" disabled selected>Select a Database . . .</option>
+              <option value="MongoDB">MongoDB</option>
+              <option value="Postgresql">Postgresql</option>
+              <option value="Mysql">Mysql</option>
+            </select>
+          </div>
+          <input type="submit" class="btn btn-primary form-control" value="Submit">
+        </form> 
+      </div>
+    </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+
+      $("#profile_person_of_interest").on('change', function () {
+        if($(this).val() == "1")
+        {
+          $("#profile_reason").attr("readonly", false);
+        }
+        else
+        {
+          $("#profile_reason").attr("readonly", true);
+        }
+      })
+
+      function getFormattedDate(dats) {
+            var date = new Date(dats);
+            var year = date.getFullYear();
+
+            var month = (1 + date.getMonth()).toString();
+            month = month.length > 1 ? month : '0' + month;
+
+            var day = date.getDate().toString();
+            day = day.length > 1 ? day : '0' + day;
+            
+            return year + '-' + month + '-' + day;
+      }
+      var type = "<%= type %>";
+
+      $("#database").val("<%= type %>");
+      $("#profile_birthdate").val(getFormattedDate("<%= data.profile_birthdate %>"));
+      $("#profile_gender").val("<%= data.profile_gender %>");
+      $("#profile_person_of_interest").val("<%= data.profile_person_of_interest %>");
+
+      if(type != "")
+      {
+        
+        $(`#database option[value!= "${type}"]`).remove()
+        if(type!="MongoDB")
+        {
+          $("#form-profile").attr("action", "/profile_form/update/"+"<%= data.profile_id %>");
+        }
+        else
+        {
+
+          $("#form-profile").attr("action", "/profile_form/update/"+"<%= data._id %>");
+        }
+      }
+  })
+</script>
+</body>
+</html>
